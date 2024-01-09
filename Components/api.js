@@ -82,3 +82,22 @@ export const saveExcelFileData = async (formData, onSuccess) => {
 		console.error('Error:', error);
 	}
 };
+
+export const exportTableData = async (formData, onSuccess) => {
+	try {
+		const response = await axios.post(laraExcelCraftExcelExportRoute, formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		});
+
+		if (response.data.success) {
+			onSuccess(response);
+		} else {
+			console.log(`tables names loading failed.`);
+		}
+	} catch (error) {
+		// Handle errors
+		console.error('Error:', error);
+	}
+};

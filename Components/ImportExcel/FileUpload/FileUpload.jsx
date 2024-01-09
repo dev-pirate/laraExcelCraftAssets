@@ -105,9 +105,7 @@ export const FileUpload = ({ tablesInfo }) => {
                                 const columns = row.split(',');
                                 dataArray.push(columns);
                             });
-                            console.table(rows);
                         }
-                        //console.log(info);
                         if (info.file && info.file?.status !== 'removed') {
                             reader.readAsText(info.file.originFileObj);
                         }

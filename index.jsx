@@ -5,7 +5,8 @@ import App from './Components/ImportExcel/App';
 import reportWebVitals from './reportWebVitals';
 import AppExport from "./Components/ExportExcel/AppExport";
 
-if (document.getElementById('lara-excel-craft-import')) {
+if (document.getElementById('lara-excel-craft-import'))
+{
     render(
         <React.StrictMode>
             <AntdApp message={{ maxCount: 1 }} notification={{ placement: 'bottomLeft' }}>
@@ -14,7 +15,10 @@ if (document.getElementById('lara-excel-craft-import')) {
         </React.StrictMode>,
         document.getElementById('lara-excel-craft-import')
     );
-} else {
+}
+
+if (document.getElementById('lara-excel-craft-export'))
+{
     render(
         <React.StrictMode>
             <AntdApp message={{ maxCount: 1 }} notification={{ placement: 'bottomLeft' }}>

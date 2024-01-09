@@ -4,16 +4,11 @@ export const loadTablesNames = async (onSuccess) => {
 	try {
 		const response = await axios.get(laraExcelCraftTableFetchRoute);
 
-		console.log({ response });
 		if (response.data.success) {
 			onSuccess(response);
 		} else {
 			console.log(`tables names loading failed.`);
 		}
-
-		// Handle the response data as needed
-		console.log('Response Data:', response.data);
-
 	} catch (error) {
 		// Handle errors
 		console.error('Error:', error);
@@ -24,16 +19,11 @@ export const loadExcelFileColumuns = async (fileName, onSuccess) => {
 	try {
 		const response = await axios.get(laraExcelCraftFileColumnsRoute.replace('__#FILENAME_lec#__', fileName));
 
-		console.log({ response });
 		if (response.data.success) {
 			onSuccess(response);
 		} else {
 			console.log(`tables names loading failed.`);
 		}
-
-		// Handle the response data as needed
-		console.log('Response Data:', response.data);
-
 	} catch (error) {
 		// Handle errors
 		console.error('Error:', error);
@@ -44,15 +34,11 @@ export const loadExcelFileData = async (fileName, onSuccess) => {
 	try {
 		const response = await axios.get(laraExcelCraftFileDataRoute.replace('__#FILENAME_lec#__', fileName));
 
-		console.log({ response });
 		if (response.data.success) {
 			onSuccess(response);
 		} else {
 			console.log(`tables names loading failed.`);
 		}
-
-		// Handle the response data as needed
-		console.log('Response Data:', response.data);
 
 	} catch (error) {
 		// Handle errors
@@ -68,15 +54,11 @@ export const saveExcelFileData = async (formData, onSuccess) => {
 			},
         });
 
-		console.log({ response });
 		if (response.data.success) {
 			onSuccess(response);
 		} else {
 			console.log(`tables names loading failed.`);
 		}
-
-		// Handle the response data as needed
-		console.log('Response Data:', response.data);
 	} catch (error) {
 		// Handle errors
 		console.error('Error:', error);
@@ -91,7 +73,7 @@ export const exportTableData = async (formData, onSuccess) => {
 			},
 		});
 
-		if (response.data.success) {
+		if (response.status === 200) {
 			onSuccess(response);
 		} else {
 			console.log(`tables names loading failed.`);

@@ -62,12 +62,27 @@ function AppExport() {
         formData.append('columns', JSON.stringify(columns) ?? '');
 
         exportApi(formData, (response) => {
+            const redirectTo = response.headers.redirectto ?? '';
+            const fileContent = response.data;
+            const blob = new Blob([fileContent], { type: 'text/csv' });
+
+            // Create a download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(blob);
+            downloadLink.download = 'generated_file.csv'; // Set the desired file name
+
+            // Append the link to the body and trigger the download
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+
+            // Clean up: remove the link from the DOM
+            document.body.removeChild(downloadLink);
             notification.success({
                 message: `Success`,
                 description: 'Data exported successfully to the excel sheet!!',
             });
-            localStorage.removeItem(LOCAL_STORAGE_FORM_NAME);
-            window.location.href = response.data.redirectTo;
+            //localStorage.removeItem(LOCAL_STORAGE_FORM_NAME);
+            window.location.href = redirectTo;
         })
     }
 

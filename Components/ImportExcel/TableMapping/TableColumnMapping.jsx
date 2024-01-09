@@ -25,7 +25,6 @@ export const TableColumnMapping = ({ onChange, tablesInfo }) => {
 	}, [tableName]);
 
 	const onChangeMap = (key, value) => {
-		console.log({ key, value });
 		let map = mapping;
 		map[key] = {
 			value,
@@ -62,10 +61,10 @@ export const TableColumnMapping = ({ onChange, tablesInfo }) => {
 	];
 
     return (
-		<Table 
-			columns={columns} 
-			dataSource={fields.filter(field => field?.title && field?.key)} 
-			pagination={false} 
+		<Table
+			columns={columns}
+			dataSource={fields.filter(field => field?.title && field?.key)}
+			pagination={false}
 		/>
     );
 };

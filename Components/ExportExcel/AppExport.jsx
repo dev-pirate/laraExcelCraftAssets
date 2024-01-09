@@ -81,7 +81,7 @@ function AppExport() {
                 message: `Success`,
                 description: 'Data exported successfully to the excel sheet!!',
             });
-            //localStorage.removeItem(LOCAL_STORAGE_FORM_NAME);
+            localStorage.removeItem(LOCAL_STORAGE_FORM_NAME);
             window.location.href = redirectTo;
         })
     }
